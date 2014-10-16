@@ -1,4 +1,5 @@
 ExpenseBook::Application.routes.draw do
+  get "expenses/new"
   get "categories/new"
   resources  :users
   resources  :categories

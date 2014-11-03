@@ -1,0 +1,20 @@
+<h1>
+   Welcome 
+   <%= @user.name %>
+</h1>
+
+<div id="picture">
+  <aside class="col-md-4">
+    <section>
+      <%= link_to image_tag("expense2.jpeg", alt:    "ExpenseBook"), '#' %>
+     </section>
+  </aside>
+</div>
+  <div id="column1">
+    <section class="form-button-item">
+     <%= link_to "Add Expenses", '#', class: "btn btn-lg btn-block btn-primary" %>
+    </section>
+    <section class="form-button-item"> 
+      <%= link_to "Reports", '#', class: "btn btn-lg btn-block btn-primary"%>
+    </section>
+  </div>

@@ -24,6 +24,19 @@ section {
   overflow: auto;
 }
 
+#picture {
+  float:left;
+}
+
+#column1 {
+  float:right;
+  width: 40%
+}
+
+.form-button-item{
+padding-top: 15px;
+}
+
 textarea {
   resize: vertical;
 }

@@ -3,6 +3,7 @@ ExpenseBook::Application.routes.draw do
   get "categories/new"
   resources  :users
   resources  :categories
+  resources  :expenses
   root       'static_pages#home'
   match      '/signup',           to: 'users#new',   via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.

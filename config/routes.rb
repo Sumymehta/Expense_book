@@ -1,6 +1,10 @@
 ExpenseBook::Application.routes.draw do
+  get "sessions/new"
   get "expenses/new"
   get "categories/new"
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources  :users
   resources  :categories
   resources  :expenses

@@ -1,12 +1,11 @@
 <h1>Add new expenses</h1>
 
 <div id="picture">
-  <aside class="col-md-4">
+  <aside class="col-md-6">
     <section>
       <%= link_to image_tag("expense2.jpeg", alt:    "ExpenseBook"), '#' %>
      </section>
   </aside>
-</div>
 <div id="column1">
     <%= form_for(@expense) do |f| %>
       <%= f.label :Category %>
@@ -22,4 +21,4 @@
 
     <% end %>
 </div>
-
+</div>

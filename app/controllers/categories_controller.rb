@@ -6,12 +6,16 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
   end
+  
+  def index
+    @categories = Category.all
+  end
 
   def create
     @category = Category.new(category_params)
      if @category.save
         flash[:success] = "Category saved successfully!"
-        redirect_to @category
+        redirect_to categories_path
      else
        render 'new'
      end

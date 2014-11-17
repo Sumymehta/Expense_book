@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111185543) do
+ActiveRecord::Schema.define(version: 20141115201144) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20141111185543) do
     t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date"
   end
 
   create_table "users", force: true do |t|
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141111185543) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

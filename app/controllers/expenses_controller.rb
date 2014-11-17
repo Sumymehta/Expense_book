@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
   def show
    @expense = Expense.find(params[:id])
    @category = Category.find(@expense.category_id)
-   @tot_expense = Expense.where("strftime('%m', to_timestamp(created_at)) + 0 = ?", Time.now.strftime("%m").to_i).sum("amount")
+   @tot_expense = Expense.where("strftime('%m', created_at) + 0 = ?", Time.now.strftime("%m").to_i).sum("amount")
   end
 
   def create

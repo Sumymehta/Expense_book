@@ -5,10 +5,11 @@ class ExpensesController < ApplicationController
   end
 
   def show
-   @expense = Expense.find(params[:id])
-   @category = Category.find(@expense.category_id)
-   @tot_expense = Expense.where("extract(month from created_at) = ?", Time.now.strftime("%m").to_i).sum("amount")
-  end
+   @expenses = current_user.expenses
+   #@expense = Expense.find(params[:id])
+   #@category = Category.find(@expenses.category_id)
+   @tot_expense = @expenses.where("strftime('%m', created_at) + 0 = ?", Time.now.strftime("%m").to_i).sum("amount")
+  end 
 
   def create
     @expense = current_user.expenses.build(expense_params)

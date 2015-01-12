@@ -1,0 +1,5 @@
+<%= form_tag({:controller => 'expenses', :action => 'dateFilter'}, :remote => true) do %>
+    <%= datepicker_input "expense", :start_date, :class => 'dateFilter', :dateFormat => 'mm/dd/y' %>
+    <%= datepicker_input "expense", :end_date, :class => 'dateFilter', :dateFormat => 'mm/dd/y' %>
+    <%= submit_tag "Submit" %>
+    <% end %> 

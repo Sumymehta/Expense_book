@@ -10,8 +10,36 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require_tree .
+//= require jquery.ui.all
+//= require jquery.ui.datepicker
+
+
+//$(function() {
+//  $('.datepicker').datepicker();
+//});
+
+$(document).ready(function() {
+
+//    $("#start_date").datepicker();
+//    $("#end_date").datepicker();
+    
+    $('input.ui-datepicker').datepicker();
+
+//  $('#start_date').submit(function (){  
+
+  console.log("is this even getting executed");
+
+    $.ajax({
+     type: 'POST',
+     url: "/expenses/dateFilter", 
+          beforeSend: function (xhr) {xhr.setRequestHeader("Accept", "text/javascript");},
+     data: { 'start_date' : $("input[name='expense[start_date]']").datepicker(), 'end_date' : $("input[name='expense[end_date]']").datepicker()}
+     success: function(data) { <%= render "expenses/dateFilter" %>}
+    });
+
+ });

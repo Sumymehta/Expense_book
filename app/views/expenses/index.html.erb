@@ -1,0 +1,20 @@
+<h3>List of all expenses </h3>
+
+<table>                         
+  <tr>                          
+    <th>Description</th>
+    <th></th>
+    <th>Date</th>
+    <th></th>
+    <th>Amount</>
+  </tr>
+<% @expenses.each do |data| %>       
+  <tr>
+    <td><%= data.description%></td> 
+    <td></td>
+    <td><%= data.created_at.to_date%></td>
+    <td></td>
+    <td><%= data.amount%></td>
+  </tr>
+<% end %>                        
+</table>           

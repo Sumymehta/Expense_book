@@ -5,4 +5,5 @@ class Expense < ActiveRecord::Base
   validates :user_id, presence: true
   validates :category_id, presence: true
   validates :amount, presence: true
+  validates :description, presence: true
 end

@@ -1,21 +1,34 @@
 <h1>Add new expenses</h1>
 
 <div id="picture">
-  <aside class="col-md-6">
-    <section>
+  <aside class="col-md-6">   
+    <div>
+     <% if current_user.expenses.any? %>
+      <h4>List of all Expenses</h4>
+      <ol>
+        <%= render @expenses %>
+      </ol>
+      <%= will_paginate @expenses %>
+     <% else %>
+       <section>
       <%= link_to image_tag("expense2.jpeg", alt:    "ExpenseBook"), '#' %>
-     </section>
+       </section>
+     <% end %>
+    </div>
+
   </aside>
 <div id="column1">
     <%= form_for(@expense) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
       <%= f.label :Category %>
       <%= f.collection_select(:category_id, @category, :id, :name, :include_blank => "Please select category...") %>
     
        <%= f.label :description %>
-       <%= f.text_field :description %>
+       <%= f.text_field :description, class: 'form-control' %>
 
        <%= f.label :amount %>
-       <%= f.text_field :amount %>
+       <%= f.text_field :amount, class: 'form-control' %>
 
        <%= f.submit "Save", class: "btn btn-primary" %>
 

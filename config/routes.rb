@@ -2,6 +2,7 @@ ExpenseBook::Application.routes.draw do
   get "sessions/new"
   get "expenses/new"
   get "categories/new"
+  get "expenses/dateFilter"
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -10,6 +11,7 @@ ExpenseBook::Application.routes.draw do
   resources  :expenses
   root       'static_pages#home'
   match      '/signup',           to: 'users#new',   via: 'get'
+#  match      '/expenses/dateFilter', to: 'expenses#dateFilter', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

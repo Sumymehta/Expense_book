@@ -1,14 +1,7 @@
-<%= form_tag({:controller => 'expenses', :action => 'dateFilter'}, :remote => true) do %>
-    <%= datepicker_input "expense", :start_date, :dateFormat => 'mm/dd/y' %>
-    <%= datepicker_input "event", :end_date, :dateFormat => 'mm/dd/y' %>
-    <%= submit_tag "Submit" %>
-    <% end %> 
-
-
-/* <%= form_tag({:controller => 'expenses', :action => 'dateFilter'}, :class =>"datepicker", :remote => true) do %>
+<%= form_tag({:controller => 'expenses', :action => 'dateFilter'}, :class =>"datepicker", :remote => true) do %>
     <%= label_tag("Start Date") %> <br />
     <%= text_field_tag(:start_date) %>
     <%= label_tag("End Date") %> <br />
     <%= text_field_tag(:end_date) %>
     <%= submit_tag "Submit" %>
-    <% end %> */
+    <% end %> 

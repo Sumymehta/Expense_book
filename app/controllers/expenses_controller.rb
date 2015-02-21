@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
    @expenses = current_user.expenses.paginate(page: params[:page])
    #@expense = Expense.find(params[:id])
    #@category = Category.find(@expenses.category_id)
-   @tot_expense = @expenses.where("extract(month from created_at) = ?", Time.now.strftime("%m").to_i).sum("amount")
+   @tot_expense = @expenses.where("strftime('m', created_at) + 0 = ?", Time.now.strftime("%m").to_i).sum("amount")
   end 
 
   def create
@@ -37,13 +37,9 @@ class ExpensesController < ApplicationController
   end
 
   def dateFilter  
-   @expenses = current_user.expenses.where(:created_at => (params[:start_date]..params[:end_date]))
-
-  respond_to do |format|
-      format.html
-      format.json { render json: @expenses }
-      format.js
-  end
+   cat_id = params[:Category]
+   @expensesFiltered = current_user.expenses.where(:created_at => (params[:start_date].to_date .. params[:end_date].to_date)). where("category_id = ?", cat_id[:id])
+  @total = @expensesFiltered.sum("amount")
 end
 
   private

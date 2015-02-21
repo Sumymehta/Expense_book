@@ -22,7 +22,7 @@
 
 $(document).ready(function() {
 
-   $("#start_date").datepicker();
-   $("#end_date").datepicker();
+   $("#start_date").datepicker({dateFormat: "yy-mm-dd"});
+   $("#end_date").datepicker({dateFormat: "yy-mm-dd"});
     
  });

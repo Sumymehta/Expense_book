@@ -1,0 +1,8 @@
+<%= form_tag({:controller => 'expenses', :action => 'dateFilter'}, :class =>"datepicker") do %>
+    <%= collection_select Category, :id, Category.all, :id, :name, :include_blank => "Please select category..." %>
+    <%= label_tag("Start Date") %> <br />
+    <%= text_field_tag(:start_date) %>
+    <%= label_tag("End Date") %> <br />
+    <%= text_field_tag(:end_date) %>
+    <%= submit_tag "Submit" %>
+    <% end %> 

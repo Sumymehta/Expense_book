@@ -10,7 +10,7 @@
      <%= link_to "Add Expenses", new_expense_path, class: "btn btn-lg btn-block btn-primary" %>
     </section>
     <section class="form-button-item"> 
-      <%= link_to "Reports", expenses_path, class: "btn btn-lg btn-block btn-primary"%>
+      <%= link_to "Reports", '/expenses/dateForm', class: "btn btn-lg btn-block btn-primary", data: { no_turbolink: true }%>
     </section>
     <section class="form-button-item">
      <% if current_user.admin? %>

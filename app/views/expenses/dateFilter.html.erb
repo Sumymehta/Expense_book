@@ -1,5 +1,27 @@
-<ol>
-   <%= render @expensesFiltered %>
-   <%= @total %>
-</ol>
+<% if @category != [] %>
+<h4>List of all expenses for <%= @category %></h4>
+<h4>Between <%= @From %> and <%= @To %> </h4>
+<% else %>
+<h4>List of all expenses </h4>
+<h4>Between <%= @From %> and <%= @To %> </h4>
+<% end %>
+<table>                         
+  <tr>                          
+    <th>Description</th>
+    <th></th>
+    <th>Date</th>
+    <th></th>
+    <th>Amount</>
+  </tr>
+<% @expensesFiltered.each do |data| %>       
+  <tr>
+    <td><%= data.description%></td> 
+    <td></td>
+    <td><%= data.created_at.to_date%></td>
+    <td></td>
+    <td><%= data.amount%></td>
+  </tr>
+<% end %>                        
+</table>           
 
+<h4>Total expense is: Rs. <%= @total %></h4>

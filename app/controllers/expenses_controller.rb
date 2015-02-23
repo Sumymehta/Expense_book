@@ -42,7 +42,23 @@ class ExpensesController < ApplicationController
    @From = params[:start_date].to_date
    @To = params[:end_date].to_date  
    if cat_id[:id] == ''
-    @expensesFiltered = current_user.expenses.where(:created_at => (params[:start_date].to_date .. params[:end_date].to_date))
+     if params[:start_date] == ''
+       redirect_to '/expenses/dateForm'
+       return
+     elsif params[:end_date]== ''
+       redirect_to '/expenses/dateForm'
+       return
+     else
+       @expensesFiltered = current_user.expenses.where(:created_at => (params[:start_date].to_date .. params[:end_date].to_date))
+     end
+   elsif cat_id[:id] != ''
+     if params[:start_date] == ''
+       redirect_to '/expenses/dateForm'
+       return
+     elsif params[:end_date]== ''
+       redirect_to '/expenses/dateForm'
+       return
+     end
    elsif params[:start_date] == ''
     redirect_to '/expenses/dateForm'
     return

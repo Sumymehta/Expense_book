@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
    @expenses = current_user.expenses.paginate(page: params[:page])
    #@expense = Expense.find(params[:id])
    #@category = Category.find(@expenses.category_id)
-   @tot_expense = @expenses.where("strftime('%m', created_at) + 0 = ?", Time.now.strftime("%m").to_i).sum("amount")
+   @tot_expense = @expenses.where('extract(month from created_at) = ?', Time.now.strftime("%m").to_i).sum("amount")
   end 
 
   def create

@@ -58,6 +58,8 @@ class ExpensesController < ApplicationController
      elsif params[:end_date]== ''
        redirect_to '/expenses/dateForm'
        return
+     else
+        @expensesFiltered = current_user.expenses.where(:created_at => (params[:start_date].to_date .. params[:end_date].to_date)). where("category_id = ?", cat_id[:id])
      end
    elsif params[:start_date] == ''
     redirect_to '/expenses/dateForm'
@@ -67,6 +69,7 @@ class ExpensesController < ApplicationController
     return
    else
     @expensesFiltered = current_user.expenses.where(:created_at => (params[:start_date].to_date .. params[:end_date].to_date)). where("category_id = ?", cat_id[:id])
+    @total = @expensesFiltered.sum("amount")
    end
   @total = @expensesFiltered.sum("amount")
 end
